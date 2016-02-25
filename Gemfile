@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'unicorn'
+gem 'figaro'
 gem 'rolify'
 gem 'authority'
 
