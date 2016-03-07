@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224023913) do
+ActiveRecord::Schema.define(version: 20160303102827) do
+
+  create_table "illjus", force: :cascade do |t|
+    t.integer  "illchi"
+    t.integer  "judae"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "illjus", ["user_id"], name: "index_illjus_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +32,33 @@ ActiveRecord::Schema.define(version: 20160224023913) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "story_id"
+    t.text     "content"
+    t.text     "choices"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "questions", ["story_id"], name: "index_questions_on_story_id"
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "my_ans"
+    t.integer  "target_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string   "speaker"
+    t.text     "content"
+    t.boolean  "next_ok"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,10 +73,12 @@ ActiveRecord::Schema.define(version: 20160224023913) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "current_stage"
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
     t.string   "image"
+    t.string   "oauth_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

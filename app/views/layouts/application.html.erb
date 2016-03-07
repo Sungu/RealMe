@@ -26,8 +26,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Home", "/home/index" %></li>
             <li><%= link_to "Posts", "/posts" %></li>
+            <li><%= link_to "게임하기", "/games/ready_page" %></li>
+            <li><%= link_to "친구 질문 답하기", "/answer_friend/select_friend" %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
@@ -37,7 +39,7 @@
               
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
             <% else %>
-              <li><%= link_to "Sign in", new_user_session_path %></li>
+              <%#<li><%= link_to "Sign in", new_user_session_path %><%#</li>%>
               <li><%= link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook) %></li>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>

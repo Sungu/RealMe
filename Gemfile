@@ -4,6 +4,7 @@ gem 'unicorn'
 gem 'figaro'
 gem 'rolify'
 gem 'authority'
+gem 'koala'
 
 gem 'bootstrap-sass'
 gem 'simple_form'
