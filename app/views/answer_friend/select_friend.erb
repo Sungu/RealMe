@@ -1,6 +1,6 @@
 <%=form_tag "/answer_friend/friend_res", method: "post" do%>
   <% current_user.facebook.get_connections("me", "friends").each do |a| %>
-    <input type="hidden" name="friend_id" value="<%=a["id"]%>">
+    <input type="hidden" name="friend_id" value="<%= User.where(uid: a["id"]).ids[0] %>">
     <p>   <button class="btn btn-defalut" href="#"><%= a["name"]%></button></p>
   <% end %>
 <% end %>

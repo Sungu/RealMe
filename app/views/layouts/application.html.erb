@@ -26,8 +26,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Home", "/home/index" %></li>
-            <li><%= link_to "Posts", "/posts" %></li>
+            <li><%= link_to "친구와 함께하기", "/home/index" %></li>
+            <li><%= link_to "게시판", "/posts" %></li>
             <li><%= link_to "게임하기", "/games/ready_page" %></li>
             <li><%= link_to "친구 질문 답하기", "/answer_friend/select_friend" %></li>
           </ul>
@@ -35,13 +35,13 @@
             <% if user_signed_in? %>
               <li><%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %></li>
               <li><%= current_user.name %></li>
-              <li><%= link_to "My Profile", edit_user_registration_path %></li>
+              <!--<li><%= link_to "프로필보기", edit_user_registration_path %></li> -->
               
-              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+              <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
             <% else %>
               <%#<li><%= link_to "Sign in", new_user_session_path %><%#</li>%>
-              <li><%= link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook) %></li>
-              <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "페이스북으로 로그인", user_omniauth_authorize_path(:facebook) %></li>
+              <%#<li><%= link_to "Sign up", new_user_registration_path %><%#</li> %>
             <% end %>
           </ul>
         </div>

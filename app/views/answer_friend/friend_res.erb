@@ -1,6 +1,6 @@
 <% @story_list.each do |a| %>
   <% if a.question %>
-    <% if (Response.where(user_id: current_user.id, target_id: User.where(uid: @friend_id).ids[0], question_id: a.question.id).exists?) %>
+    <% if (Response.where(user_id: current_user.id, target_id: @friend_id.to_i, question_id: a.question.id).exists?) %>
     
     <% else %>
       <p>   <%= a.speaker %> : <%= a.content %></p>
