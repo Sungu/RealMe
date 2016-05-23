@@ -3,7 +3,11 @@ class AnswerFriendController < ApplicationController
     end
     
     def friend_res
-      @friend_id = params[:friend_id].to_i
+      if params[:friend_id].to_i == 0
+        @friend_id = 1
+      else
+        @friend_id = params[:friend_id].to_i
+      end
       @story_list = Story.all
     end
     
